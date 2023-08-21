@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background: #000000;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #000000, #365f2f);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #000000, #395834);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8)), url('./assets/imagens/fundo.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+
+    font-family: 'Segoe UI';
+
+}
+
+.checkbox:checked:before {
+    background-color: rgb(33, 97, 33);
+}
+
+
+input[type="file"] {
+    align-content: center;
+    display: none;
+}
+
+.uploadLabel {
+    font-size: medium;
+    width: 115px;
+    height: 30px;
+    background-color: #2c6d3c;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 5px;
+    cursor: pointer;
+}

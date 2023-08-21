@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "revochurchmanagement-34ecf"
+  },
+  "targets": {
+    "revochurchmanagement-34ecf": {
+      "hosting": {
+        "RevoChurchManagement": [
+          "revochurchmanagement-34ecf"
+        ]
+      }
+    }
+  }
+}
