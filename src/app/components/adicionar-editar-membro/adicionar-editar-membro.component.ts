@@ -1,4 +1,4 @@
-import { CollectionReference, DocumentReference, Firestore, addDoc, collectionData } from '@angular/fire/firestore';
+import { CollectionReference, DocumentReference, Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
 import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -32,7 +32,7 @@ export class AdicionarEditarMembroComponent {
       dataAtualizacao: new Date(),
     };
 
-    addDoc(this.usersCollection, <any>{ membroAdd }).then((documentReference: DocumentReference) => {
+    addDoc(collection(this.firestore, 'membros'), <any>{ membroAdd }).then((documentReference: DocumentReference) => {
       console.log(documentReference);
     });
   }
