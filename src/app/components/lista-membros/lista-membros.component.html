@@ -13,51 +13,42 @@
                     <tr>
                         <th>Nome Completo</th>
                         <th>Data de Nascimento</th>
+                        <th>Idade</th>
+                        <th>Telefone</th>
                         <th>Estado Cívil</th>
                         <th>Bairro</th>
                         <th>Cidade</th>
                         <th>Operações</th>
                     </tr>
                 </thead>
-                <tbody class="table-group-divider">
-                    <tr>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Mark</td>
+                <tbody *ngIf="listaMembros.length > 0" class="table-group-divider">
+                    <tr *ngFor="let membro of listaMembros">
+                        <td>{{membro.nome}} {{membro.sobrenome}}</td>
+                        <td>{{membro.dataNascimento}}</td>
+                        <td>{{membro.idade}}</td>
+                        <td>{{membro.telefone}}</td>
+                        <td>{{membro.estadoCivil}}</td>
+                        <td>{{membro.bairro}}</td>
+                        <td>{{membro.cidade}}</td>
                         <td>
-                            <i class="fas fa-user-edit fa-lg mr-10"
+                            <i class="fas fa-user-edit fa-lg mr-10" title="Editar Membro"
                                 style="color: #2c6d3c; margin-right: 10px; cursor: pointer;"></i>
-                            <i class="fas fa-trash fa-lg" style="color: #921e11; cursor: pointer;"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>Mark</td>
-                        <td>
-                            <i class="fas fa-user-edit fa-lg mr-10"
-                                style="color: #2c6d3c; margin-right: 10px; cursor: pointer;"></i>
-                            <i class="fas fa-trash fa-lg" style="color: #921e11; cursor: pointer;"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                        <td>
-                            <i class="fas fa-user-edit fa-lg mr-10"
-                                style="color: #2c6d3c; margin-right: 10px; cursor: pointer;"></i>
-                            <i class="fas fa-trash fa-lg" style="color: #921e11; cursor: pointer;"></i>
+                            <i (click)="deletarMembro(membro.id)" class="fas fa-trash fa-lg"
+                                style="color: #921e11; cursor: pointer;" title="Excluir Membro"></i>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <span *ngIf="listaMembros.length == 0" class="h6" style="color: #2c6d3c; font-weight: bold;">
+                    NENHUM REGISTRO CADASTRADO
+                </span>
+            </div>
+            <div>
+                <span *ngIf="listaMembros.length == 0" class="h6" style="color: #2c6d3c; font-weight: bold;">
+                    Clique no botão "Adicionar" para efetuar o primeiro cadastro
+                </span>
+            </div>
         </div>
     </div>
 </div>

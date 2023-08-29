@@ -1,6 +1,8 @@
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, deleteDoc, doc, getFirestore } from '@angular/fire/firestore';
 import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 
@@ -15,16 +17,21 @@ export class ListaMembrosComponent {
   membros!: Observable<any[]>;
   listaMembros: any[] = [];
 
-  constructor() {
-    // get a reference to the user-profile collection
-    const userProfileCollection = collection(this.firestore, 'membros');
+  constructor(private toastr: ToastrService, private router: Router) {
 
+  }
 
+  ngOnInit() {
+    this.carregarMembros();
+  }
+
+  carregarMembros(): void {
+    this.listaMembros = [];
     // get documents (data) from the collection using collectionData
     this.membros = collectionData(collection(this.firestore, 'membros'), { idField: 'id' }) as Observable<any[]>;
 
     this.membros.subscribe(data => {
-      console.log(data);
+      this.listaMembros = [];
       data.forEach((element: any) => {
         console.log(element);
         this.listaMembros.push(
@@ -36,13 +43,19 @@ export class ListaMembrosComponent {
             dataNascimento: element.membroAdd.dataNascimento,
             idade: this.ageFromDateOfBirthday(element.membroAdd.dataNascimento),
             telefone: element.membroAdd.telefone,
+            estadoCivil: element.membroAdd.estadoCivil === '0' ? "" : element.membroAdd.estadoCivil,
+            cidade: element.membroAdd.cidade,
           }
         );
       })
     })
+
   }
 
-  public ageFromDateOfBirthday(dateOfBirth: any): number {
+  public ageFromDateOfBirthday(dateOfBirth: any): any {
+    if (dateOfBirth === undefined || dateOfBirth === null || dateOfBirth === '') {
+      return undefined;
+    }
     const today = new Date();
     const birthDate = new Date(dateOfBirth.substr(6, 4), dateOfBirth.substr(3, 2), dateOfBirth.substr(0, 2));
     let age = today.getFullYear() - birthDate.getFullYear();
@@ -53,5 +66,23 @@ export class ListaMembrosComponent {
     }
 
     return age;
+  }
+
+  deletarMembro(id: string) {
+    const db = getFirestore();
+    const docRef = doc(db, "membros", id);
+    deleteDoc(docRef).then(() => {
+      this.toastr.success('Membro excluído com sucesso!', 'OPERAÇÃO EFETUADA COM SUCESSO!',
+        {
+          positionClass: 'toast-top-center'
+        });
+    })
+      .catch(error => {
+        this.toastr.error(error, 'OPERAÇÃO NÃO EFETUADA!',
+          {
+            positionClass: 'toast-top-center'
+          });
+        console.log(error);
+      })
   }
 }
