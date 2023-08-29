@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 interface Item {
   nome: string,
   sobrenome: string,
+  rua: string,
 };
 
 @Component({

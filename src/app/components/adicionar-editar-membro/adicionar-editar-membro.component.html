@@ -6,22 +6,31 @@
                     <div class="card-body">
                         <span class="h3" style="color: #2c6d3c; font-weight: bold;">
                             Inserir Membro
+                            <div *ngIf="loading ===true" class="spinner-grow float-end"
+                                style="width: 1rem; height: 1rem;" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
                         </span>
-                        <form style="margin-top: 20px;" [formGroup]="adicionarMembro" (ngSubmit)="adicionarMembroBase()">
+                        <form style="margin-top: 20px;" [formGroup]="adicionarMembro"
+                            (ngSubmit)="adicionarMembroBase()">
                             <div class="row">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Primeiro Nome" formControlName="nome">
+                                    <input type="text" class="form-control" placeholder="Primeiro Nome"
+                                        formControlName="nome">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Sobrenome" formControlName="sobrenome">
+                                    <input type="text" class="form-control" placeholder="Sobrenome"
+                                        formControlName="sobrenome">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 8px;">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Data de Nascimento">
+                                    <input type="text" class="form-control" placeholder="Data de Nascimento"
+                                        formControlName="dataNascimento">
                                 </div>
                                 <div class="col">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example"
+                                        formControlName="estadoCivil">
                                         <option selected value="0">Selecione um Estado Cívil</option>
                                         <option value="Solteiro(a)">Solteiro(a)</option>
                                         <option value="Casado(a)">Casado(a)</option>
@@ -30,25 +39,33 @@
                                         <option value="Viúvo(a)">Viúvo(a)</option>
                                     </select>
                                 </div>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" placeholder="Telefone" style="width: 100%;"
+                                        formControlName="telefone">
+                                </div>
                             </div>
                             <div class="row" style="margin-top: 8px;">
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" placeholder="Rua" style="max-width: 100%;">
+                                    <input type="text" class="form-control" placeholder="Rua" style="max-width: 100%;"
+                                        formControlName="rua">
                                 </div>
                                 <div class="col-lg-2">
-                                    <input type="text" class="form-control" placeholder="Número" style="width: 100%;">
+                                    <input type="text" class="form-control" placeholder="Número" style="width: 100%;"
+                                        formControlName="numero">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 8px;">
                                 <div class="col-lg-4">
                                     <input type="text" class="form-control" placeholder="Bairro"
-                                        style="max-width: 100%;">
+                                        formControlName="bairro" style="max-width: 100%;">
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control" placeholder="Cidade" style="width: 100%;">
+                                    <input type="text" class="form-control" placeholder="Cidade" style="width: 100%;"
+                                        formControlName="cidade">
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control" placeholder="CEP" style="width: 100%;">
+                                    <input type="text" class="form-control" placeholder="CEP" style="width: 100%;"
+                                        formControlName="cep">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 8px;">
@@ -56,12 +73,13 @@
                                     <label class="main"
                                         style=" font-family:'Segoe UI'; font-size: medium;margin-top: 5px;">
                                         GPS
-                                        <input type="checkbox">
+                                        <input type="checkbox" formControlName="gps">
                                         <span class="geekmark"></span>
                                     </label>
                                 </div>
                                 <div class="col-lg-3">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example"
+                                        formControlName="grupoGps">
                                         <option selected value="0">Selecione um GPS</option>
                                         <option value="Solteiro(a)">GPS 1</option>
                                         <option value="Casado(a)">GPS 2</option>
@@ -74,7 +92,7 @@
                                     <label class="main"
                                         style=" font-family:'Segoe UI'; font-size: medium;margin-top: 5px;">
                                         Encontro com Deus
-                                        <input type="checkbox">
+                                        <input type="checkbox" formControlName="ecd">
                                         <span class="geekmark"></span>
                                     </label>
                                 </div>
@@ -82,7 +100,7 @@
                                     <label class="main"
                                         style=" font-family:'Segoe UI'; font-size: medium;margin-top: 5px;">
                                         Escola de Crescimento
-                                        <input type="checkbox">
+                                        <input type="checkbox" formControlName="ec">
                                         <span class="geekmark"></span>
                                     </label>
                                 </div>
@@ -90,7 +108,7 @@
                                     <label class="main"
                                         style=" font-family:'Segoe UI'; font-size: medium;margin-top: 5px;">
                                         DNA RevoChurch
-                                        <input type="checkbox">
+                                        <input type="checkbox" formControlName="dna">
                                         <span class="geekmark"></span>
                                     </label>
                                 </div>
@@ -100,24 +118,27 @@
                                     <label class="main"
                                         style=" font-family:'Segoe UI'; font-size: medium; margin-top: 5px;">
                                         Batismo
-                                        <input type="checkbox">
+                                        <input type="checkbox" formControlName="batismo">
                                         <span class="geekmark"></span>
                                     </label>
                                 </div>
                                 <div class="col-lg-2">
-                                    <input type="text" class="form-control" placeholder="Data do Batismo">
+                                    <input type="text" class="form-control" placeholder="Data do Batismo"
+                                        formControlName="dataBatismo">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 8px; align-content: center; margin-left: 45%;">
                                 <div>
                                     <label class="uploadLabel" for="arquivo">Foto</label>
-                                    <input type="file" name="arquivo" class="arquivo" id="arquivo">
+                                    <input type="file" name="arquivo" class="arquivo" id="arquivo"
+                                        formControlName="foto">
                                     <img src="" class="foto" id="foto">
                                 </div>
                             </div>
                             <div class="col-lg-3 float-end">
                                 <button id="buttonVoltar" type="button" class="btn mt-1"
-                                    style="background-color: #818181; color: #ffffff; width: 150px;" routerLink="/lista-membros">
+                                    style="background-color: #818181; color: #ffffff; width: 150px;"
+                                    routerLink="/lista-membros">
                                     Voltar
                                 </button>
                                 <button id="buttonAdicionar" type="submit" class="btn float-end mt-1"
