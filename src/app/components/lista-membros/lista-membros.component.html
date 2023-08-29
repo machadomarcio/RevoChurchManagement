@@ -5,7 +5,7 @@
                 Lista de Membros
             </span>
             <button id="buttonAdicionar" type="button" class="btn float-end mt-1"
-                style="background-color: #2c6d3c; color: #ffffff;" routerLink="/adicionar-editar-membro">
+                style="background-color: #2c6d3c; color: #ffffff;" routerLink="/adicionar-membro">
                 Adicionar
             </button>
             <table class="table table-hover">
@@ -32,7 +32,8 @@
                         <td>{{membro.cidade}}</td>
                         <td>
                             <i class="fas fa-user-edit fa-lg mr-10" title="Editar Membro"
-                                style="color: #2c6d3c; margin-right: 10px; cursor: pointer;"></i>
+                                style="color: #2c6d3c; margin-right: 10px; cursor: pointer;"
+                                [routerLink]="['/editar-membro/',membro.id]"></i>
                             <i (click)="deletarMembro(membro.id)" class="fas fa-trash fa-lg"
                                 style="color: #921e11; cursor: pointer;" title="Excluir Membro"></i>
                         </td>

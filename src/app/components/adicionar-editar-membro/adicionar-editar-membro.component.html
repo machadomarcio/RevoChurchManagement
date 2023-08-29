@@ -5,21 +5,21 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <span class="h3" style="color: #2c6d3c; font-weight: bold;">
-                            Inserir Membro
+                            {{titulo}}
                             <div *ngIf="loading ===true" class="spinner-grow float-end"
                                 style="width: 1rem; height: 1rem;" role="status">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </span>
                         <form style="margin-top: 20px;" [formGroup]="adicionarMembro"
-                            (ngSubmit)="adicionarMembroBase()">
+                            (ngSubmit)="adicionarEditarMembroBase()">
                             <div class="row">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Primeiro Nome"
+                                    <input type="text" class="form-control" placeholder="Primeiro Nome(obrigatório)"
                                         formControlName="nome">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Sobrenome"
+                                    <input type="text" class="form-control" placeholder="Sobrenome(obrigatório)"
                                         formControlName="sobrenome">
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control" placeholder="Telefone" style="width: 100%;"
+                                    <input type="text" class="form-control" placeholder="Telefone(obrigatório)" style="width: 100%;"
                                         formControlName="telefone">
                                 </div>
                             </div>
@@ -143,7 +143,7 @@
                                 </button>
                                 <button id="buttonAdicionar" type="submit" class="btn float-end mt-1"
                                     style="background-color: #2c6d3c; color: #ffffff; width: 150px">
-                                    Adicionar
+                                    {{textoBotao}}
                                 </button>
                             </div>
                         </form>

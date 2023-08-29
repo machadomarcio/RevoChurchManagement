@@ -6,7 +6,8 @@ import { AdicionarEditarMembroComponent } from './components/adicionar-editar-me
 const routes: Routes = [
   { path:'', redirectTo: 'lista-membros', pathMatch: 'full' },
   { path:'lista-membros', component: ListaMembrosComponent },
-  { path:'adicionar-editar-membro', component: AdicionarEditarMembroComponent },
+  { path:'adicionar-membro', component: AdicionarEditarMembroComponent },
+  { path:'editar-membro/:id', component: AdicionarEditarMembroComponent },
   { path:'**', redirectTo: 'lista-membros', pathMatch: 'full' },
 ];
 

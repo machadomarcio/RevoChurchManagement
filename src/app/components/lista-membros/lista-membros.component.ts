@@ -37,14 +37,14 @@ export class ListaMembrosComponent {
         this.listaMembros.push(
           {
             id: element.id,
-            nome: element.membroAdd.nome,
-            sobrenome: element.membroAdd.sobrenome,
-            bairro: element.membroAdd.bairro,
-            dataNascimento: element.membroAdd.dataNascimento,
-            idade: this.ageFromDateOfBirthday(element.membroAdd.dataNascimento),
-            telefone: element.membroAdd.telefone,
-            estadoCivil: element.membroAdd.estadoCivil === '0' ? "" : element.membroAdd.estadoCivil,
-            cidade: element.membroAdd.cidade,
+            nome: element.membro.nome,
+            sobrenome: element.membro.sobrenome,
+            bairro: element.membro.bairro,
+            dataNascimento: element.membro.dataNascimento,
+            idade: this.ageFromDateOfBirthday(element.membro.dataNascimento),
+            telefone: element.membro.telefone,
+            estadoCivil: element.membro.estadoCivil === '0' ? "" : element.membro.estadoCivil,
+            cidade: element.membro.cidade,
           }
         );
       })
